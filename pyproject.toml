@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "crypto-monitor"
+version = "0.1.0"
+description = ""
+authors = ["mvodolan <mvodolan@themama.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+prometheus_client = "*"
+fastapi = "*"
+uvicorn = "*"
+forex_python = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  crypto_monitor:
+    ports:
+      - "8758:8758"
+    volumes:
+      - ../../data/crypto-monitor:/data
+    restart: always
+    build:
+      dockerfile: Dockerfile
