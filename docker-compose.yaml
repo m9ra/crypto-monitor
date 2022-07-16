@@ -7,4 +7,5 @@ services:
       - ../../data/crypto-monitor:/data
     restart: always
     build:
+      context: .
       dockerfile: Dockerfile
