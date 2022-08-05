@@ -35,7 +35,7 @@ def _download_fio_rates():
     buy_rate = match.group(2)
 
     sell_rate = _rate_to_float(sell_rate)
-    buy_rate = _rate_to_float(buy_rate)
+    buy_rate = 1 / _rate_to_float(buy_rate)
 
     return {
         'EURCZK': sell_rate,
