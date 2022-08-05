@@ -13,6 +13,7 @@ from prometheus_client import Gauge
 from starlette.responses import JSONResponse, HTMLResponse
 
 from crypto_monitor import DATA_PATH
+from crypto_monitor.forex import get_fio_rates
 from crypto_monitor.kraken import download_kraken_table
 from crypto_monitor.schemas import Account
 
@@ -69,10 +70,14 @@ def _init_balance_metrics():
 def _update_metrics():
     while True:
         try:
-            converter = CurrencyRates()
+            # converter = CurrencyRates()
 
-            eur_to_czk = converter.get_rate('EUR', 'CZK')
-            czk_to_eur = converter.get_rate('CZK', 'EUR')
+            # eur_to_czk = converter.get_rate('EUR', 'CZK')
+            # czk_to_eur = converter.get_rate('CZK', 'EUR')
+            rates = get_fio_rates()
+            eur_to_czk = rates['EURCZK']
+            czk_to_eur = rates['CZKEUR']
+
             kraken_table = download_kraken_table()
 
             FOREX_METRIC.labels('EUR', 'CZK').set(float(eur_to_czk))
